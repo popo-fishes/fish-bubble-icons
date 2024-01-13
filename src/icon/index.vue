@@ -4,9 +4,29 @@
  * <slot />应该为你的svg节点
 -->
 <template>
-  <span style="display: inline-flex; align-items: center; color: inherit; font-style: normal; line-height: 0; text-align: center" class="fb-icon" role="img">
+  <span :style="iconStyle" class="fb-icon" role="img">
     <slot />
   </span>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from "vue";
+import type { IconProps } from "./type";
+const props = defineProps<IconProps>();
+
+const iconStyle = computed(() => {
+  const _style = {
+    display: "inline-flex",
+    alignItems: "center",
+    fontStyle: "normal",
+    color: props.color || "inherit",
+    fontSize: props.size || "inherit"
+  };
+
+  if (props.size) {
+    _style[`fontSize`] = typeof props.size == "string" ? props.size : `${props.size}px`;
+  }
+
+  return _style;
+});
+</script>

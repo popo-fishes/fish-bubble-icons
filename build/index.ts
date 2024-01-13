@@ -33,7 +33,7 @@ const buildBundle = () => {
       // https://esbuild.github.io/api/#bundle
       bundle: true,
       format,
-      minify: true,
+      // minify: true,
       // https://esbuild.github.io/api/#minify
       minifySyntax: true,
       // https://esbuild.github.io/api/#external

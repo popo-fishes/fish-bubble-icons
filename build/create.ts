@@ -44,26 +44,32 @@ async function createVueComponent(file: string) {
   const svgElement = document.querySelector("svg");
 
   Array.from(svgElement.attributes).forEach((attr: any) => {
-    svgElement.removeAttribute(attr.name);
+    if (attr.name !== "viewBox") {
+      svgElement.removeAttribute(attr.name);
+    }
   });
 
   svgElement.setAttribute("width", "1em");
   svgElement.setAttribute("height", "1em");
   /* 定义元素的颜色，currentColor是一个变量，这个变量的值就表示当前元素的color值，如果当前元素未设置color值，则从父元素继承 */
-  svgElement.setAttribute("fill", "currentcolor");
+  svgElement.setAttribute("fill", "currentColor");
 
   const vue = await formatCode(
     `
   <template>
-  <Icon>
+  <Icon :size="size" :color="color">
    ${svgElement.outerHTML}
   </Icon>
   </template>
   <script lang="ts" setup>
+  import {IconProps} from '../icon/type'
   import Icon from '../icon/index.vue'
+
   defineOptions({
     name: ${JSON.stringify(componentName)}
   })
+
+  defineProps<IconProps>();
   </script>`,
     "vue"
   );

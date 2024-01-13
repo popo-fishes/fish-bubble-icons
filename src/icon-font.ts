@@ -4,12 +4,9 @@
  */
 import { FunctionalComponent, h } from "vue";
 import Icon from "./icon/index.vue";
+import { IconProps } from "./icon/type";
 
 const customCache = new Set<string>();
-
-export interface CustomIconOptions {
-  scriptUrl?: string | string[];
-}
 
 function isValidCustomScriptUrl(scriptUrl: string): boolean {
   return typeof scriptUrl === "string" && scriptUrl.length && !customCache.has(scriptUrl);
@@ -34,7 +31,15 @@ function createScriptUrlElements(scriptUrls: string[], index: number = 0): void 
   }
 }
 
-export default function create(options: CustomIconOptions = {}): FunctionalComponent {
+export interface IconFontProps extends IconProps {
+  type: string;
+}
+
+export default function create(
+  options: {
+    scriptUrl?: string | string[];
+  } = {}
+): FunctionalComponent<IconFontProps> {
   const { scriptUrl } = options;
 
   /**
@@ -52,7 +57,7 @@ export default function create(options: CustomIconOptions = {}): FunctionalCompo
     }
   }
 
-  const Iconfont = (props, context) => {
+  const Iconfont = (props: IconFontProps, context: any) => {
     const { attrs, slots } = context;
     const { type, ...restProps } = { ...props, ...attrs } as any;
     const children = slots.default && slots.default?.();
@@ -60,7 +65,7 @@ export default function create(options: CustomIconOptions = {}): FunctionalCompo
     let content = null;
 
     if (type) {
-      content = h("svg", { width: "1em", height: "1em", fill: "currentcolor" }, [h("use", { "xlink:href": `#${type}` })]);
+      content = h("svg", { width: "1em", height: "1em", fill: "currentColor" }, [h("use", { "xlink:href": `#${type}` })]);
     }
 
     if (children && children.length) {
