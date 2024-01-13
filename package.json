@@ -1,6 +1,6 @@
 {
   "name": "@fish-bubble/icons",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Vue components of fish-bubble icons collection.",
   "type": "module",
   "keywords": [
@@ -17,7 +17,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/u-fish-bubble/fish-bubble-icons"
+    "url": "git+https://github.com/u-fish-bubble/fish-bubble-icons.git"
   },
   "publishConfig": {
     "access": "public"
