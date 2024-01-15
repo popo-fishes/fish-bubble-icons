@@ -25,7 +25,7 @@ $ pnpm install @fish-bubble/icons
 
  <script setup lang="ts">
    import { Close, createFromIconfont } from "@fish-bubble/icons";
-   // 如何你是使用 iconfont.cn
+   // 如果你是使用 iconfont.cn
    /**
     * 对于使用 iconfont.cn 的用户，通过设置 createFromIconfont 方法参数对象中的 scriptUrl 字段，
     *  即可轻松地使用已有项目中的图标
@@ -36,7 +36,7 @@ $ pnpm install @fish-bubble/icons
  </script>
 
  <template>
-   // 如何你是使用 iconfont.cn
+   // 如果你是使用 iconfont.cn
    // 使用createFromIconfont时: SVG图标自带颜色：某些SVG图标可能已经自带颜色，这会导致您在CSS中设置的样式无效
    <IconFont type="yp-fangda" size="22px" color="red" />
 
