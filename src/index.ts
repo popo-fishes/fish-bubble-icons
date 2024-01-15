@@ -4,3 +4,5 @@
  */
 export * from "./components";
 export { default as createFromIconfont } from "./icon-font";
+import Icon from "./icon/index.vue";
+export default Icon;
