@@ -48,13 +48,13 @@ const buildBundle = () => {
       build({
         ...getBuildOptions("esm"),
         // https://esbuild.github.io/api/#entry-names
-        entryNames: `[name]`
+        entryNames: `[name]`,
+        // https://esbuild.github.io/api/#out-extension
+        outExtension: { ".js": ".mjs" }
       }),
       build({
         ...getBuildOptions("cjs"),
-        entryNames: `[name]`,
-        // https://esbuild.github.io/api/#out-extension
-        outExtension: { ".js": ".cjs" }
+        entryNames: `[name]`
       })
     ]);
   };

@@ -18,15 +18,15 @@ const iconStyle = computed(() => {
   const _style = {
     display: "inline-flex",
     alignItems: "center",
-    fontStyle: "normal",
-    color: props.color || "inherit",
-    fontSize: props.size || "inherit"
+    fontStyle: "normal"
   };
 
   if (props.size) {
     _style[`fontSize`] = typeof props.size == "string" ? props.size : `${props.size}px`;
   }
-
+  if (props.color) {
+    _style[`color`] = props.color;
+  }
   return _style;
 });
 </script>
